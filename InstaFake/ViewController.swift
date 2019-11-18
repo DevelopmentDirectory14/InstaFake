@@ -86,6 +86,19 @@ class ViewController: UIViewController {
             }
             
             print("Successfuly created user:", result?.user.uid ?? "")
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let values = [uid: 1]
+            Database.database().reference().child("users").setValue(values) { (err, ref) in
+                
+                if let err = err {
+                    print("Failed to save user info into db:", err)
+                    return
+                }
+                
+                print("Successfully added user info into db")
+            }
         }
     }
     
