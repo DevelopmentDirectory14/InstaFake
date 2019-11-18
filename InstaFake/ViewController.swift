@@ -24,18 +24,18 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
-        
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        
         return tf
     }()
     
     @objc func handleTextInputChange() {
-        let isEmailValid = emailTextField.text?.count ?? 0 > 0
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
-        if isEmailValid {
-            signUpButton.backgroundColor = .red
+        if isFormValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
         } else {
+            signUpButton.isEnabled = false
             signUpButton.backgroundColor = UIColor.rgb(red: 149,green: 205,blue: 244)
         }
     }
@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -66,9 +68,8 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
-        
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
-        
+        button.isEnabled = false
         return button
     }()
     
