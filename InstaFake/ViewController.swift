@@ -1,7 +1,7 @@
 //
 //  ViewController.swift
 //  InstaFake
-// .
+// 
 //  Created by Aleksey Shapoval on 11/15/19.
 //  Copyright © 2019 VoVa LLC. All rights reserved.
 //
@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     let usernameTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Username"
-        tf.isSecureTextEntry = true
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -40,6 +39,7 @@ class ViewController: UIViewController {
     let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Password"
+        tf.isSecureTextEntry = true
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -60,9 +60,9 @@ class ViewController: UIViewController {
     }()
     
     @objc func handleSignUp() {
-        
-        let email = "soandso@soandso.com"
-        let password = "ekfaelk4lk3"
+        guard let email = emailTextField.text, email.count > 0 else { return }
+        guard let username = usernameTextField.text, username.count > 0 else { return }
+        guard let password = passwordTextField.text, password.count > 0 else { return }
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
