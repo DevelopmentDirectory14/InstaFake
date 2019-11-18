@@ -26,6 +26,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("Test")
+        
+        let imageInfoKey : UIImagePickerController.InfoKey = UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")
+        let originalImage = info[imageInfoKey] as? UIImage
+
+        print(originalImage?.size)
+    }
+    
     let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
