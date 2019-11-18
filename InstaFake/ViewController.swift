@@ -31,8 +31,13 @@ class ViewController: UIViewController {
     }()
     
     @objc func handleTextInputChange() {
+        let isEmailValid = emailTextField.text?.count ?? 0 > 0
         
-        signUpButton.backgroundColor = .red
+        if isEmailValid {
+            signUpButton.backgroundColor = .red
+        } else {
+            signUpButton.backgroundColor = UIColor.rgb(red: 149,green: 205,blue: 244)
+        }
     }
     
     let usernameTextField: UITextField = {
