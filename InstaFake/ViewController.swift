@@ -89,9 +89,10 @@ class ViewController: UIViewController {
             
             guard let uid = result?.user.uid else { return }
             
-            let values = [uid: 1]
-            Database.database().reference().child("users").setValue(values) { (err, ref) in
-                
+            let usernameValues = ["username" : username]
+            let values = [uid: usernameValues]
+            
+            Database.database().reference().child("users").updateChildValues(values) { (err, ref) in
                 if let err = err {
                     print("Failed to save user info into db:", err)
                     return
@@ -99,6 +100,7 @@ class ViewController: UIViewController {
                 
                 print("Successfully added user info into db")
             }
+            
         }
     }
     
