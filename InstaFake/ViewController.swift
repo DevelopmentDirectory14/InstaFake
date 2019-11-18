@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         
         present(imagePickerController, animated: true, completion: nil)
     }
@@ -29,10 +30,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Test")
         
-        let imageInfoKey : UIImagePickerController.InfoKey = UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")
-        let originalImage = info[imageInfoKey] as? UIImage
-
-        print(originalImage?.size)
+        if let editedImageInfoKey : UIImagePickerController.InfoKey = UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage") {
+            let editedImage = info[editedImageInfoKey] as? UIImage
+            plusPhotoButton.setImage(editedImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImageInfoKey : UIImagePickerController.InfoKey = UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage") {
+            let originalImage = info[originalImageInfoKey] as? UIImage
+            plusPhotoButton.setImage(originalImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width/2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+        
+        dismiss(animated: true, completion: nil)
     }
     
     let emailTextField: UITextField = {
