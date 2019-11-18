@@ -115,19 +115,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             print("Successfuly created user:", result?.user.uid ?? "")
             
-            guard let uid = result?.user.uid else { return }
+            guard let image = self.plusPhotoButton.imageView?.image else { return }
             
-            let usernameValues = ["username" : username]
-            let values = [uid: usernameValues]
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
-            Database.database().reference().child("users").updateChildValues(values) { (err, ref) in
+            Storage.storage().reference().child("profile_image").putData(uploadData, metadata: nil) { (metadata, err) in
+                
                 if let err = err {
-                    print("Failed to save user info into db:", err)
+                    print("Failed to upload profile image:", err)
                     return
                 }
                 
-                print("Successfully added user info into db")
+                //guard let profileImageURL = metadata?.downloadURL()?.absoluteString else { return }
+                
+                print("Successfully uploaded profile image")
             }
+            
+//            guard let uid = result?.user.uid else { return }
+//
+//            let usernameValues = ["username" : username]
+//            let values = [uid: usernameValues]
+//
+//            Database.database().reference().child("users").updateChildValues(values) { (err, ref) in
+//                if let err = err {
+//                    print("Failed to save user info into db:", err)
+//                    return
+//                }
+//
+//                print("Successfully added user info into db")
+//            }
             
         }
     }
