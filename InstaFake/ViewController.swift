@@ -119,32 +119,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
-            Storage.storage().reference().child("profile_image").putData(uploadData, metadata: nil) { (metadata, err) in
+            let filename = NSUUID().uuidString
+            
+            let storageRef = Storage.storage().reference().child("profile_images").child(filename)
                 
-                if let err = err {
-                    print("Failed to upload profile image:", err)
-                    return
-                }
-                
-                //guard let profileImageURL = metadata?.downloadURL()?.absoluteString else { return }
-                
-                print("Successfully uploaded profile image")
+                storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
+                    
+                    if let err = err {
+                        print("Failed to upload profile image:", err)
+                        return
+                    }
+                    
+                    // Firebase 5 Update: Must now retrieve downloadURL
+                    storageRef.downloadURL(completion: { (downloadURL, err) in
+                        if let err = err {
+                            print("Failed to fetch downloadURL:", err)
+                            return
+                        }
+                        
+                        guard let profileImageUrl = downloadURL?.absoluteString else { return }
+                        
+                        print("Successfully uploaded image:", profileImageUrl)
+                        
+                        guard let uid = result?.user.uid else { return }
+
+                        let dictionaryValues = ["username" : username, "profileImageUrl" : profileImageUrl]
+                        let values = [uid: dictionaryValues]
+
+                        Database.database().reference().child("users").updateChildValues(values) { (err, ref) in
+                            if let err = err {
+                                print("Failed to save user info into db:", err)
+                                return
+                            }
+
+                            print("Successfully added user info into db")
+                        }
+                    })
             }
-            
-//            guard let uid = result?.user.uid else { return }
-//
-//            let usernameValues = ["username" : username]
-//            let values = [uid: usernameValues]
-//
-//            Database.database().reference().child("users").updateChildValues(values) { (err, ref) in
-//                if let err = err {
-//                    print("Failed to save user info into db:", err)
-//                    return
-//                }
-//
-//                print("Successfully added user info into db")
-//            }
-            
         }
     }
     
