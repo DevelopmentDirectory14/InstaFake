@@ -24,8 +24,16 @@ class ViewController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        
         return tf
     }()
+    
+    @objc func handleTextInputChange() {
+        
+        signUpButton.backgroundColor = .red
+    }
     
     let usernameTextField: UITextField = {
         let tf = UITextField()
