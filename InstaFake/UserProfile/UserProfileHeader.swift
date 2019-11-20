@@ -32,21 +32,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
-            print("Did set \(user?.username)")
-        }
-    }
-    
-    fileprivate func setupProfileImage() {
-        
-        //copied Firebase fetch code
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value ?? "")
-            
-            guard let dictionary = snapshot.value as? [String : Any] else { return }
-            
-            guard let profileImageUrl = dictionary["profileImageUrl"] as? String else { return }
+            guard let profileImageUrl = user?.profileImageUrl else { return }
             
             guard let url = URL(string: profileImageUrl) else { return }
             
@@ -69,6 +55,22 @@ class UserProfileHeader: UICollectionViewCell {
                 }
                 
             }.resume()
+        }
+    }
+    
+    fileprivate func setupProfileImage() {
+        
+        //copied Firebase fetch code
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value ?? "")
+            
+            guard let dictionary = snapshot.value as? [String : Any] else { return }
+            
+            guard let profileImageUrl = dictionary["profileImageUrl"] as? String else { return }
+            
+            
             
         }) { (err) in
             print("Failed to fetch user:", err)
