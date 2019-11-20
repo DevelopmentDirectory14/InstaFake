@@ -23,6 +23,9 @@ class UserProfileHeader: UICollectionViewCell {
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
+        profileImageView.layer.cornerRadius = 80 / 2
+        profileImageView.clipsToBounds = true
+        
     }
     
     required init?(coder: NSCoder) {
