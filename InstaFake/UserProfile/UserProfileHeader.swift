@@ -30,6 +30,12 @@ class UserProfileHeader: UICollectionViewCell {
         setupProfileImage()
     }
     
+    var user: User? {
+        didSet {
+            print("Did set \(user?.username)")
+        }
+    }
+    
     fileprivate func setupProfileImage() {
         
         //copied Firebase fetch code
