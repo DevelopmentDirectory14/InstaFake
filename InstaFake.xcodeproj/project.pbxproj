@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */; };
+		0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB23D2385AD2D006D67EF /* UserProfileController.swift */; };
 		0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6871C4237F0A2D006DC63E /* AppDelegate.swift */; };
 		0A6871C7237F0A2D006DC63E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6871C6237F0A2D006DC63E /* SceneDelegate.swift */; };
 		0A6871C9237F0A2D006DC63E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6871C8237F0A2D006DC63E /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		0A1FB23D2385AD2D006D67EF /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		0A6871C1237F0A2D006DC63E /* InstaFake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaFake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6871C4237F0A2D006DC63E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A6871C6237F0A2D006DC63E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,9 +81,10 @@
 			children = (
 				0A6871FA237F5C4A006DC63E /* Utils */,
 				0A6871C4237F0A2D006DC63E /* AppDelegate.swift */,
+				0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */,
+				0A1FB23D2385AD2D006D67EF /* UserProfileController.swift */,
 				0A6871C6237F0A2D006DC63E /* SceneDelegate.swift */,
 				0A6871C8237F0A2D006DC63E /* ViewController.swift */,
-				0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */,
 				0A6871CA237F0A2D006DC63E /* Main.storyboard */,
 				0A6871CD237F0A30006DC63E /* Assets.xcassets */,
 				0A6871CF237F0A30006DC63E /* LaunchScreen.storyboard */,
@@ -226,6 +229,7 @@
 			files = (
 				0A6871C9237F0A2D006DC63E /* ViewController.swift in Sources */,
 				0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */,
+				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
 				0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */,
 				0A6871C7237F0A2D006DC63E /* SceneDelegate.swift in Sources */,
 				0A6871FC237F5C7D006DC63E /* Extensions.swift in Sources */,
