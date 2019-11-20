@@ -27,9 +27,9 @@ class UserProfileController: UICollectionViewController {
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             print(snapshot.value ?? "")
             
-            let dictionary = snapshot.value as? [String : Any]
+            guard let dictionary = snapshot.value as? [String : Any] else { return }
             
-            let username = dictionary?["username"] as? String
+            let username = dictionary["username"] as? String
             self.navigationItem.title = username
             
         }) { (err) in
