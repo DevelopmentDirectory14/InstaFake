@@ -8,10 +8,10 @@
 
 import UIKit
 
-class UserProfileController: UIViewController {
+class UserProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .green
+        collectionView?.backgroundColor = .green
     }
 }

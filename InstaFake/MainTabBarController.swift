@@ -13,9 +13,16 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .blue
         
-        let userProfileController = UserProfileController()
+        let layout = UICollectionViewFlowLayout()
+        let userProfileController = UserProfileController(collectionViewLayout: layout)
+        
         let navController = UINavigationController(rootViewController: userProfileController)
         
-        viewControllers = [navController]
+        navController.tabBarItem.image = UIImage(named: "profile_unselected")
+        navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
+        
+        tabBar.tintColor = .black
+        
+        viewControllers = [navController, UIViewController()]
     }
 }
