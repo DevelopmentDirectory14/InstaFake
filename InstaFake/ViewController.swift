@@ -154,7 +154,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
                             print("Successfully added user info into db")
                         }
-                    })
+                    }) 
             }
         }
     }
