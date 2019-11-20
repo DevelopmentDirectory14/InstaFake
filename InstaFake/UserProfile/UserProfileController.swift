@@ -64,10 +64,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 
 struct User {
     let username: String
-    let profileImageURL: String
+    let profileImageUrl: String
     
     init(dictionary: [String: Any]) {
         self.username = dictionary["username"] as? String ?? ""
-        self.profileImageURL = dictionary["profileImageURL"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageURL"] as? String ?? ""
     }
 }

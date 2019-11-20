@@ -32,7 +32,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
-            print("Did set \(user?.username)")
+            
         }
     }
     
@@ -48,27 +48,7 @@ class UserProfileHeader: UICollectionViewCell {
             
             guard let profileImageUrl = dictionary["profileImageUrl"] as? String else { return }
             
-            guard let url = URL(string: profileImageUrl) else { return }
             
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
-                //check for the error, then construct the image using data
-                
-                if let err = err {
-                    print("Failed to fetch profile image:", err)
-                    return
-                }
-                
-                print(data)
-                
-                guard let data = data else { return }
-                let image = UIImage(data: data)
-                
-                //need to get back onto the main UI thread
-                DispatchQueue.main.async {
-                    self.profileImageView.image = image
-                }
-                
-            }.resume()
             
         }) { (err) in
             print("Failed to fetch user:", err)
