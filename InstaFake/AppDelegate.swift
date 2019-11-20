@@ -1,7 +1,7 @@
 //
 //  AppDelegate.swift
 //  InstaFake
-// .
+//  Git Test
 //  Created by Aleksey Shapoval on 11/15/19.
 //  Copyright © 2019 VoVa LLC. All rights reserved.
 //
