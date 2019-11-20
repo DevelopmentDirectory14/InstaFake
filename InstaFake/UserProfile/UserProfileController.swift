@@ -45,11 +45,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             guard let dictionary = snapshot.value as? [String : Any] else { return }
             
-            //let profileImageUrl = dictionary["profileImageUrl"] as? String
-            //let username = dictionary["username"] as? String
-            
             self.user = User(dictionary: dictionary)
-            
             self.navigationItem.title = self.user?.username
             
             self.collectionView?.reloadData()
@@ -68,6 +64,6 @@ struct User {
     
     init(dictionary: [String: Any]) {
         self.username = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageURL"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
     }
 }
