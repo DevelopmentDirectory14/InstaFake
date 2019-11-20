@@ -13,10 +13,8 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .blue
         
-        let redVC = UIViewController()
-        redVC.view.backgroundColor = .red
-        
-        let navController = UINavigationController(rootViewController: redVC)
+        let userProfileController = UserProfileController()
+        let navController = UINavigationController(rootViewController: userProfileController)
         
         viewControllers = [navController]
     }
