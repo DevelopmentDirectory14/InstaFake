@@ -34,14 +34,21 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     @objc func handleLogOut() {
-        let alertController = UIAlertController(title: "Log out", message: "Are you sure?", preferredStyle: .actionSheet)
-        present(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { (_) in
-            print("Perform log out")
+            
+            do {
+                try Auth.auth().signOut()
+            } catch let signOutErr {
+                print("Failed to sign out:", signOutErr)
+            }
+            
         }))
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
