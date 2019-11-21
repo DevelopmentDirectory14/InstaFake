@@ -26,19 +26,19 @@ class UserProfileHeader: UICollectionViewCell {
     let listButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "list"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
     let bookmarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "ribbon"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .blue
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
@@ -49,7 +49,10 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupBottomToolbar() {
-        let stackView = UIStackView(arrangedSubviews: [listButton, gridButton, bookmarButton])
+        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarButton])
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         
         addSubview(stackView)
         stackView.anchor(top: nil, left: leftAnchor, bottom: self.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
