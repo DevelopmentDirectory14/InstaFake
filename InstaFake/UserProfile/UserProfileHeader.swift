@@ -17,6 +17,24 @@ class UserProfileHeader: UICollectionViewCell {
         return iv
     }()
     
+    let gridButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "grid"), for: .normal)
+        return button
+    }()
+    
+    let listButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "list"), for: .normal)
+        return button
+    }()
+    
+    let bookmarButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "ribbon"), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -26,7 +44,17 @@ class UserProfileHeader: UICollectionViewCell {
         profileImageView.anchor(top: topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
         profileImageView.layer.cornerRadius = 80 / 2
         profileImageView.clipsToBounds = true
-
+        
+        setupBottomToolbar()
+    }
+    
+    fileprivate func setupBottomToolbar() {
+        let stackView = UIStackView(arrangedSubviews: [listButton, gridButton, bookmarButton])
+        
+        addSubview(stackView)
+        stackView.anchor(top: nil, left: leftAnchor, bottom: self.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        
     }
     
     var user: User? {
@@ -49,7 +77,7 @@ class UserProfileHeader: UICollectionViewCell {
                 return
             }
             
-            print(data)
+            //print(data)
             
             guard let data = data else { return }
             let image = UIImage(data: data)
