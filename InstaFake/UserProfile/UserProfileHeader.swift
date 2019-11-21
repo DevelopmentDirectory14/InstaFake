@@ -52,7 +52,13 @@ class UserProfileHeader: UICollectionViewCell {
     
     let postsLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nposts"
+        
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14) ])
+        
+        attributedText.append(NSAttributedString(string: "posts", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        label.attributedText = attributedText
+        
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -60,7 +66,13 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nposts"
+        
+        let attributedText = NSMutableAttributedString(string: "1000\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14) ])
+        
+        attributedText.append(NSAttributedString(string: "followers", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        label.attributedText = attributedText
+        
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -68,7 +80,13 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nposts"
+        
+        let attributedText = NSMutableAttributedString(string: "8\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14) ])
+        
+        attributedText.append(NSAttributedString(string: "following", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        label.attributedText = attributedText
+        
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
