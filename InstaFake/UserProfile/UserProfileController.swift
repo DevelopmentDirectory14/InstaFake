@@ -30,11 +30,18 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func setupLogOutButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"), style: .plain, target: self, action: #selector(handleLogOut))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
     }
     
     @objc func handleLogOut() {
-        print("logging out")
+        let alertController = UIAlertController(title: "Log out", message: "Are you sure?", preferredStyle: .actionSheet)
+        present(alertController, animated: true, completion: nil)
+        
+        alertController.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { (_) in
+            print("Perform log out")
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
