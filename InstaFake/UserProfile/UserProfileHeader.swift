@@ -133,15 +133,27 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupBottomToolbar() {
+        
+        let topDividerView = UIView()
+        topDividerView.backgroundColor = UIColor.lightGray
+        
+        let bottomDividerView = UIView()
+        bottomDividerView.backgroundColor = UIColor.lightGray
+        
         let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarButton])
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
+        addSubview(topDividerView)
+        addSubview(bottomDividerView)
+        
         stackView.anchor(top: nil, left: leftAnchor, bottom: self.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
+        topDividerView.anchor(top: stackView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
+        bottomDividerView.anchor(top: stackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     
