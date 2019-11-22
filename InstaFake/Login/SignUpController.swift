@@ -168,9 +168,13 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        //button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handleAlreadyHaveAccount() {
+        _ = navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
