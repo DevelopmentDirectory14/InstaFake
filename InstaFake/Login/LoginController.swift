@@ -31,7 +31,7 @@ class LoginController: UIViewController {
        tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
        tf.borderStyle = .roundedRect
        tf.font = UIFont.systemFont(ofSize: 14)
-       //tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+       tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
        return tf
     }()
     
@@ -42,9 +42,21 @@ class LoginController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
-        //tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
+    
+    @objc func handleTextInputChange() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = UIColor.rgb(red: 149,green: 205,blue: 244)
+        }
+    }
     
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
