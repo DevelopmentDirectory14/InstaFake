@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
             navController.modalPresentationCapturesStatusBarAppearance = true
-            
+            navController.modalPresentationStyle = .fullScreen
             
             present(navController, animated: true, completion: nil)
             return false
