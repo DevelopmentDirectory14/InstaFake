@@ -21,6 +21,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
             navController.modalPresentationCapturesStatusBarAppearance = true
+            //make photoSelectorController full screen (change needed in iOS 13)
             navController.modalPresentationStyle = .fullScreen
             
             present(navController, animated: true, completion: nil)
