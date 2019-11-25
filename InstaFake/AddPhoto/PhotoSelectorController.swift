@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoSelectorController: UICollectionViewController {
+class PhotoSelectorController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .yellow
@@ -17,6 +17,20 @@ class PhotoSelectorController: UICollectionViewController {
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = (view.frame.width - 3) / 4
+        return CGSize(width: width, height: width)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
