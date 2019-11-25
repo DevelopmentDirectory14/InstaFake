@@ -20,6 +20,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             let layout = UICollectionViewFlowLayout()
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
+            navController.modalPresentationCapturesStatusBarAppearance = true
             
             
             present(navController, animated: true, completion: nil)

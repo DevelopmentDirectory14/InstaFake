@@ -16,7 +16,12 @@ class PhotoSelectorController: UICollectionViewController {
         setupNavigationButtons()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     fileprivate func setupNavigationButtons() {
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     }
     
