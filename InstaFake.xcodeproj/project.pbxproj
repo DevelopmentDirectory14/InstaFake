@@ -18,6 +18,7 @@
 		0A6871D1237F0A30006DC63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6871CF237F0A30006DC63E /* LaunchScreen.storyboard */; };
 		0A6871FC237F5C7D006DC63E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6871FB237F5C7D006DC63E /* Extensions.swift */; };
 		0A6871FE2381D9A9006DC63E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6871FD2381D9A9006DC63E /* GoogleService-Info.plist */; };
+		0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */; };
 		0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E8C492387361500F5D39A /* LoginController.swift */; };
 		704FA9ACC934C2CBACF1155C /* Pods_InstaFake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC671B279DE8BC8069559B37 /* Pods_InstaFake.framework */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		0A6871D2237F0A30006DC63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6871FB237F5C7D006DC63E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0A6871FD2381D9A9006DC63E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		0A6E8C492387361500F5D39A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		146531540772C7FDBD45436A /* Pods-InstaFake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.debug.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.debug.xcconfig"; sourceTree = "<group>"; };
 		ADF62604D0F57C10F3EFA796 /* Pods-InstaFake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.release.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		0A6871C3237F0A2D006DC63E /* InstaFake */ = {
 			isa = PBXGroup;
 			children = (
+				0A6AD761238C5C500088C74E /* AddPhoto */,
 				0A6E8C48238735FA00F5D39A /* Login */,
 				0A1FB23F2385C4DC006D67EF /* UserProfile */,
 				0A6871FA237F5C4A006DC63E /* Utils */,
@@ -113,6 +116,14 @@
 				0A6871FB237F5C7D006DC63E /* Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0A6AD761238C5C500088C74E /* AddPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */,
+			);
+			path = AddPhoto;
 			sourceTree = "<group>";
 		};
 		0A6E8C48238735FA00F5D39A /* Login */ = {
@@ -252,6 +263,7 @@
 				0A6871C9237F0A2D006DC63E /* SignUpController.swift in Sources */,
 				0A1FB2412385C4FF006D67EF /* UserProfileHeader.swift in Sources */,
 				0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */,
+				0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */,
 				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
 				0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */,
 				0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */,
