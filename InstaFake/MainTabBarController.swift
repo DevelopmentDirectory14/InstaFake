@@ -28,17 +28,37 @@ class MainTabBarController: UITabBarController {
     }
     
     func setupViewControllers() {
+        //home
+        let homeNavController = templateNavController()
+        
+        //search
+        let searchController = UIViewController()
+        let searchNavController = UINavigationController(rootViewController: searchController)
+        searchNavController.tabBarItem.image = UIImage(named: "search_unselected")
+            searchNavController.tabBarItem.selectedImage = UIImage(named: "search_selected")
+        
+        //user profile
         let layout = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layout)
         
-        let navController = UINavigationController(rootViewController: userProfileController)
+        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
-        navController.tabBarItem.image = UIImage(named: "profile_unselected")
-        navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
+        userProfileNavController.tabBarItem.image = UIImage(named: "profile_unselected")
+        userProfileNavController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         
         tabBar.tintColor = .black
         
-        viewControllers = [navController, UIViewController()]
+        viewControllers = [homeNavController, searchNavController, userProfileNavController]
+        
+        //viewControllers = [navController, UIViewController()]
+    }
+    
+    fileprivate func templateNavController() -> UINavigationController {
+        let viewController = UIViewController()
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = UIImage(named: "home_unselected")
+        navController.tabBarItem.selectedImage = UIImage(named: "home_selected")
+        return navController
     }
     
 }
