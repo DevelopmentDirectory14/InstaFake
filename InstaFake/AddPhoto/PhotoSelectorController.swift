@@ -12,5 +12,16 @@ class PhotoSelectorController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .yellow
+        
+        setupNavigationButtons()
     }
+    
+    fileprivate func setupNavigationButtons() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+    }
+    
+    @objc func handleCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
