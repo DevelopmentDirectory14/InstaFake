@@ -37,14 +37,17 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     var images = [UIImage]()
     
-    fileprivate func fetchPhotos() {
-        
+    fileprivate func assetsFetchOptions() -> PHFetchOptions {
         let fetchOptions = PHFetchOptions()
         fetchOptions.fetchLimit = 10
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]
+        return fetchOptions
+    }
+    
+    fileprivate func fetchPhotos() {
         
-        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
         
         allPhotos.enumerateObjects({ (asset, count, stop) in
             let imageManager = PHImageManager.default()
@@ -56,6 +59,11 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
                 
                 if let image = image {
                         self.images.append(image)
+                    
+                    if self.selectedImage == nil {
+                        self.selectedImage = image
+                        
+                    }
                 }
                 
                 if count == allPhotos.count - 1 {
