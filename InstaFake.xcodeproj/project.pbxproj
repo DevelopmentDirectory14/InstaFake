@@ -21,6 +21,7 @@
 		0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */; };
 		0A6AD765238C85E00088C74E /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */; };
 		0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E8C492387361500F5D39A /* LoginController.swift */; };
+		0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */; };
 		704FA9ACC934C2CBACF1155C /* Pods_InstaFake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC671B279DE8BC8069559B37 /* Pods_InstaFake.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		0A6E8C492387361500F5D39A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		146531540772C7FDBD45436A /* Pods-InstaFake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.debug.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.debug.xcconfig"; sourceTree = "<group>"; };
 		ADF62604D0F57C10F3EFA796 /* Pods-InstaFake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.release.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.release.xcconfig"; sourceTree = "<group>"; };
 		EC671B279DE8BC8069559B37 /* Pods_InstaFake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaFake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 			children = (
 				0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */,
 				0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */,
+				0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */,
 			);
 			path = AddPhoto;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */,
 				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
 				0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */,
+				0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */,
 				0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */,
 				0A6871C7237F0A2D006DC63E /* SceneDelegate.swift in Sources */,
 				0A6871FC237F5C7D006DC63E /* Extensions.swift in Sources */,
