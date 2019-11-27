@@ -16,7 +16,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .yellow
+        collectionView?.backgroundColor = .white
         
         setupNavigationButtons()
         
@@ -34,12 +34,12 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     var selectedImage : UIImage?
-    
     var images = [UIImage]()
+    var assets = [PHAsset]()
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 10
+        fetchOptions.fetchLimit = 15
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]
         return fetchOptions
@@ -49,30 +49,35 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         
         let allPhotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
         
-        allPhotos.enumerateObjects({ (asset, count, stop) in
-            let imageManager = PHImageManager.default()
-            let targetSize = CGSize(width: 350, height: 350)
-            let options = PHImageRequestOptions()
-            options.isSynchronous = true
+        DispatchQueue.global(qos: .background).async {
             
-            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { (image, info) in
+            allPhotos.enumerateObjects({ (asset, count, stop) in
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 200, height: 200)
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
                 
-                if let image = image {
-                        self.images.append(image)
+                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { (image, info) in
                     
-                    if self.selectedImage == nil {
-                        self.selectedImage = image
+                    if let image = image {
+                        self.images.append(image)
+                        self.assets.append(asset)
+                        
+                        if self.selectedImage == nil {
+                            self.selectedImage = image
+                            
+                        }
+                    }
+                    
+                    if count == allPhotos.count - 1 {
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
                         
                     }
                 }
-                
-                if count == allPhotos.count - 1 {
-                    self.collectionView.reloadData()
-                }
-                
-            }
-            
-        })
+            })
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -90,7 +95,23 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         
         header.photoImageView.image = selectedImage
         
-        header.backgroundColor = .red
+        if let selectedImage = selectedImage {
+            if let index = self.images.firstIndex(of: selectedImage) {
+                let selectedAsset = self.assets[index]
+                let targetSize = CGSize(width: 750, height: 750)
+                
+                
+                let imageManager = PHImageManager.default()
+                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil) { (image, info) in
+                    
+                    header.photoImageView.image = image
+                    
+                }
+            }
+        }
+    
+        
+        
         return header
     }
     
