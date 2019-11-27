@@ -27,13 +27,22 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         fetchPhotos()
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.selectedImage = images[indexPath.item]
+        self.collectionView?.reloadData()
+    }
+    
+    var selectedImage : UIImage?
+    
     var images = [UIImage]()
     
     fileprivate func fetchPhotos() {
-        print("Fetching photos")
         
         let fetchOptions = PHFetchOptions()
         fetchOptions.fetchLimit = 10
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchOptions.sortDescriptors = [sortDescriptor]
         
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         
@@ -90,7 +99,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return images.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
