@@ -31,6 +31,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         
         self.selectedImage = images[indexPath.item]
         self.collectionView?.reloadData()
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
     var selectedImage : UIImage?
