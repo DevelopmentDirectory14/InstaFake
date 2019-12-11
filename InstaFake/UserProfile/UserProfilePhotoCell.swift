@@ -16,27 +16,7 @@ class UserProfilePhotoCell: UICollectionViewCell {
             
             photoImageView.loadImage(urlString: imageURL)
     
-            guard let url = URL(string: imageURL) else { return }
             
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
-                if let err = err {
-                    print("Failed to fetch post image:", err)
-                    return
-                }
-                
-                if url.absoluteString != self.post?.imageURL {
-                    return
-                }
-                
-                guard let imageData = data else { return }
-                
-                let photoImage = UIImage(data: imageData)
-                
-                DispatchQueue.main.async {
-                    self.photoImageView.image = photoImage
-                }
-                
-            }.resume()
         }
     }
     
