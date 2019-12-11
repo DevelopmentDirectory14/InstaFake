@@ -82,7 +82,7 @@ class SharePhotoController: UIViewController {
                 
                 print("Successfully uploaded shared image:", sharedImageURL)
                 
-                self.saveToDatabaseWithImageUrl()
+                self.saveToDatabaseWithImageUrl(sharedImageURL: sharedImageURL)
                 
             }
             
@@ -91,7 +91,23 @@ class SharePhotoController: UIViewController {
         
     }
     
-    fileprivate func saveToDatabaseWithImageUrl() {
+    fileprivate func saveToDatabaseWithImageUrl(sharedImageURL: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let userPostRef = Database.database().reference().child("posts").child(uid)
+        
+        let ref = userPostRef.childByAutoId()
+        
+        let values = ["sharedImageURL": sharedImageURL]
+        
+        ref.updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Failed to save post to DB:", err)
+                return
+            }
+            
+            print("Successfully saved post to DB")
+        }
         
     }
     
