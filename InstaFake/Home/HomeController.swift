@@ -16,7 +16,7 @@ class HomeController: UICollectionViewController {
         super.viewDidLoad()
         collectionView?.backgroundColor = .red
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
     }
     
