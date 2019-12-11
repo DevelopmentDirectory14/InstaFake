@@ -12,15 +12,19 @@ class UserProfilePhotoCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
-            print(post?.sharedImageURL ?? "")
-            
             guard let sharedImageURL = post?.sharedImageURL else { return }
             
+            photoImageView.loadImage(urlString: sharedImageURL)
+    
             guard let url = URL(string: sharedImageURL) else { return }
             
             URLSession.shared.dataTask(with: url) { (data, response, err) in
                 if let err = err {
                     print("Failed to fetch post image:", err)
+                    return
+                }
+                
+                if url.absoluteString != self.post?.sharedImageURL {
                     return
                 }
                 
@@ -36,8 +40,8 @@ class UserProfilePhotoCell: UICollectionViewCell {
         }
     }
     
-    let photoImageView: UIImageView = {
-        let iv = UIImageView()
+    let photoImageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.backgroundColor = .red
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true

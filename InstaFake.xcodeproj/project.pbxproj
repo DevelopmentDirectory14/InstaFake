@@ -22,6 +22,7 @@
 		0A6AD765238C85E00088C74E /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */; };
 		0A6B4D9723A14F1D00A42312 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B4D9623A14F1D00A42312 /* Posts.swift */; };
 		0A6B4D9923A154DD00A42312 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B4D9823A154DD00A42312 /* UserProfilePhotoCell.swift */; };
+		0A6B4D9B23A16C2800A42312 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B4D9A23A16C2800A42312 /* CustomImageView.swift */; };
 		0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E8C492387361500F5D39A /* LoginController.swift */; };
 		0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */; };
 		0AF1B345238F136D00AEF2DF /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */; };
@@ -46,6 +47,7 @@
 		0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		0A6B4D9623A14F1D00A42312 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		0A6B4D9823A154DD00A42312 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		0A6B4D9A23A16C2800A42312 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		0A6E8C492387361500F5D39A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6871FB237F5C7D006DC63E /* Extensions.swift */,
+				0A6B4D9A23A16C2800A42312 /* CustomImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				0A1FB2412385C4FF006D67EF /* UserProfileHeader.swift in Sources */,
 				0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */,
 				0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */,
+				0A6B4D9B23A16C2800A42312 /* CustomImageView.swift in Sources */,
 				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
 				0A6B4D9723A14F1D00A42312 /* Posts.swift in Sources */,
 				0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */,
