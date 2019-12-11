@@ -27,6 +27,19 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogOutButton()
+        
+        fetchPosts()
+    }
+    
+    fileprivate func fetchPosts() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value)
+        }) { (err) in
+            print("Failed to fetch posts:", err)
+        }
     }
     
     fileprivate func setupLogOutButton() {
