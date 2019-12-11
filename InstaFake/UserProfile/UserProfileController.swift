@@ -45,8 +45,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
                 
                 guard let dictionary = value as? [String: Any] else { return }
                 
-                let sharedImageURL = dictionary["sharedImageURL"] as? String
-                print("sharedImageURL: \(sharedImageURL)")
+                let post = Post(dictionary: dictionary)
+                print(post.sharedImageURL)
             }
             
         }) { (err) in

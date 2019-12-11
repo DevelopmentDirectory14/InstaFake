@@ -20,6 +20,7 @@
 		0A6871FE2381D9A9006DC63E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A6871FD2381D9A9006DC63E /* GoogleService-Info.plist */; };
 		0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */; };
 		0A6AD765238C85E00088C74E /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */; };
+		0A6B4D9723A14F1D00A42312 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B4D9623A14F1D00A42312 /* Posts.swift */; };
 		0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E8C492387361500F5D39A /* LoginController.swift */; };
 		0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */; };
 		0AF1B345238F136D00AEF2DF /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */; };
@@ -42,6 +43,7 @@
 		0A6871FD2381D9A9006DC63E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A6AD762238C5C760088C74E /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		0A6AD764238C85E00088C74E /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
+		0A6B4D9623A14F1D00A42312 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		0A6E8C492387361500F5D39A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		0A6871C3237F0A2D006DC63E /* InstaFake */ = {
 			isa = PBXGroup;
 			children = (
+				0A6B4D9523A14EFC00A42312 /* Models */,
 				0A6AD761238C5C500088C74E /* AddPhoto */,
 				0A6E8C48238735FA00F5D39A /* Login */,
 				0A1FB23F2385C4DC006D67EF /* UserProfile */,
@@ -133,6 +136,14 @@
 				0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */,
 			);
 			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		0A6B4D9523A14EFC00A42312 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A6B4D9623A14F1D00A42312 /* Posts.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0A6E8C48238735FA00F5D39A /* Login */ = {
@@ -274,6 +285,7 @@
 				0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */,
 				0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */,
 				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
+				0A6B4D9723A14F1D00A42312 /* Posts.swift in Sources */,
 				0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */,
 				0AF1B345238F136D00AEF2DF /* SharePhotoController.swift in Sources */,
 				0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */,
