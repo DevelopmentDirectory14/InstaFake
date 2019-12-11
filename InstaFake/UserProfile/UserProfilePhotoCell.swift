@@ -10,6 +10,32 @@ import UIKit
 
 class UserProfilePhotoCell: UICollectionViewCell {
     
+    var post: Post? {
+        didSet {
+            print(post?.sharedImageURL ?? "")
+            
+            guard let sharedImageURL = post?.sharedImageURL else { return }
+            
+            guard let url = URL(string: sharedImageURL) else { return }
+            
+            URLSession.shared.dataTask(with: url) { (data, response, err) in
+                if let err = err {
+                    print("Failed to fetch post image:", err)
+                    return
+                }
+                
+                guard let imageData = data else { return }
+                
+                let photoImage = UIImage(data: imageData)
+                
+                DispatchQueue.main.async {
+                    self.photoImageView.image = photoImage
+                }
+                
+            }.resume()
+        }
+    }
+    
     let photoImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
