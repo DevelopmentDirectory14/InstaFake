@@ -62,7 +62,7 @@ class SharePhotoController: UIViewController {
         
         let filename =  NSUUID().uuidString
         
-        let storageRef = Storage.storage().reference().child(filename)
+        let storageRef = Storage.storage().reference().child("posts").child(filename)
         
         storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
             
@@ -82,10 +82,16 @@ class SharePhotoController: UIViewController {
                 
                 print("Successfully uploaded shared image:", sharedImageURL)
                 
+                self.saveToDatabaseWithImageUrl()
+                
             }
             
         }
         
+        
+    }
+    
+    fileprivate func saveToDatabaseWithImageUrl() {
         
     }
     
