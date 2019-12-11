@@ -12,11 +12,11 @@ class UserProfilePhotoCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
-            guard let sharedImageURL = post?.sharedImageURL else { return }
+            guard let imageURL = post?.imageURL else { return }
             
-            photoImageView.loadImage(urlString: sharedImageURL)
+            photoImageView.loadImage(urlString: imageURL)
     
-            guard let url = URL(string: sharedImageURL) else { return }
+            guard let url = URL(string: imageURL) else { return }
             
             URLSession.shared.dataTask(with: url) { (data, response, err) in
                 if let err = err {
@@ -24,7 +24,7 @@ class UserProfilePhotoCell: UICollectionViewCell {
                     return
                 }
                 
-                if url.absoluteString != self.post?.sharedImageURL {
+                if url.absoluteString != self.post?.imageURL {
                     return
                 }
                 

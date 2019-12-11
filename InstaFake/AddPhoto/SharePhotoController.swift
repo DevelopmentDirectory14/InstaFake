@@ -83,11 +83,11 @@ class SharePhotoController: UIViewController {
                     return
                 }
                 
-                guard let sharedImageURL = downloadURL?.absoluteString else { return }
+                guard let imageURL = downloadURL?.absoluteString else { return }
                 
-                print("Successfully uploaded shared image:", sharedImageURL)
+                print("Successfully uploaded shared image:", imageURL)
                 
-                self.saveToDatabaseWithImageUrl(sharedImageURL: sharedImageURL)
+                self.saveToDatabaseWithImageUrl(imageURL: imageURL)
                 
             }
             
@@ -96,7 +96,7 @@ class SharePhotoController: UIViewController {
         
     }
     
-    fileprivate func saveToDatabaseWithImageUrl(sharedImageURL: String) {
+    fileprivate func saveToDatabaseWithImageUrl(imageURL: String) {
         guard let postImage = selectedImage else { return }
         guard let caption = textView.text else { return }
         
@@ -106,7 +106,7 @@ class SharePhotoController: UIViewController {
         
         let ref = userPostRef.childByAutoId()
         
-        let values = ["sharedImageURL": sharedImageURL, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
+        let values = ["imageURL": imageURL, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
         
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {

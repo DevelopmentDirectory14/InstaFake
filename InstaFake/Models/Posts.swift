@@ -9,10 +9,10 @@
 import Foundation
 
 struct Post {
-    let sharedImageURL: String
+    let imageURL: String
     
     init(dictionary: [String: Any]) {
-        self.sharedImageURL = dictionary["sharedImageURL"] as? String ?? ""
+        self.imageURL = dictionary["imageURL"] as? String ?? ""
     }
     
 }
