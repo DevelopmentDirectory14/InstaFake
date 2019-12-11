@@ -13,10 +13,7 @@ class UserProfilePhotoCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             guard let imageURL = post?.imageURL else { return }
-            
             photoImageView.loadImage(urlString: imageURL)
-    
-            
         }
     }
     
