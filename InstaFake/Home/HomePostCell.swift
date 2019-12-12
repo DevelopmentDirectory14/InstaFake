@@ -19,6 +19,10 @@ class HomePostCell: UICollectionViewCell {
             usernameLabel.text = "TEST USERNAME"
             
             usernameLabel.text = post?.user.username
+            
+            guard let profileImageUrl = post?.user.profileImageUrl else { return }
+            
+            userProfileImageView.loadImage(urlString: profileImageUrl)
         }
     }
     
@@ -26,7 +30,6 @@ class HomePostCell: UICollectionViewCell {
         let iv = CustomImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.backgroundColor = .blue
         return iv
     }()
     
