@@ -41,36 +41,15 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         ref.queryOrdered(byChild: "creationData").observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
-            let post = Post(dictionary: dictionary)
+            guard let user = self.user else { return }
+            
+            let post = Post(user: user, dictionary: dictionary)
             self.posts.append(post)
             
             self.collectionView.reloadData()
             
         }) { (err) in
             print("Failed to fetch ordered posts:", err)
-        }
-    }
-    
-    fileprivate func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let ref = Database.database().reference().child("posts").child(uid)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            
-            dictionaries.forEach { (key, value) in
-                
-                guard let dictionary = value as? [String: Any] else { return }
-                
-                let post = Post(dictionary: dictionary)
-                self.posts.append(post)
-            }
-            
-            self.collectionView?.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch posts:", err)
         }
     }
     

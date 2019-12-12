@@ -15,6 +15,10 @@ class HomePostCell: UICollectionViewCell {
             guard let postImageUrl = post?.imageURL else { return }
             
             photoImageView.loadImage(urlString: postImageUrl)
+            
+            usernameLabel.text = "TEST USERNAME"
+            
+            usernameLabel.text = post?.user.username
         }
     }
     
@@ -86,7 +90,6 @@ class HomePostCell: UICollectionViewCell {
         label.attributedText = attributedText
         label.numberOfLines = 0
         
-        label.backgroundColor = .yellow
         return label
     }()
     
