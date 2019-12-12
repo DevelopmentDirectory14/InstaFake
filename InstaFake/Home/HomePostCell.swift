@@ -79,7 +79,10 @@ class HomePostCell: UICollectionViewCell {
         
         attributedText.append(NSAttributedString(string: " Some caption text that will wrap on the next line possibly ...", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
+        attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        
         label.attributedText = attributedText
+        label.numberOfLines = 0
         
         label.backgroundColor = .yellow
         return label
@@ -87,8 +90,6 @@ class HomePostCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .gray
         
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
@@ -109,7 +110,7 @@ class HomePostCell: UICollectionViewCell {
         setupActionButtons()
         
         addSubview(captionLabel)
-        captionLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        captionLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
     }
     
     fileprivate func setupActionButtons() {
