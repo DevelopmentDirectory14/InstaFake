@@ -9,6 +9,12 @@
 import UIKit
 import Firebase
 
+extension Database {
+    static func fetchUserWithUID(uid: String) {
+        print("Fetching user with UID:", uid)
+    }
+}
+
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
@@ -29,23 +35,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     fileprivate func fetchPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let userDictionary = snapshot.value as? [String: Any] else { return }
-            
-            let user = User(uid: uid, dictionary: userDictionary)
-            
-            self.fetchPostsWithUser(user: user)
-             
-        }) { (err) in
-            print("Failed to fetch user for posts:", err)
-        }
+        Database.fetchUserWithUID(uid: uid)
+        
+//        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            guard let userDictionary = snapshot.value as? [String: Any] else { return }
+//            
+//            let user = User(uid: uid, dictionary: userDictionary)
+//            
+//            self.fetchPostsWithUser(user: user)
+//             
+//        }) { (err) in
+//            print("Failed to fetch user for posts:", err)
+//        }
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let ref = Database.database().reference().child("posts").child(uid)
+        let ref = Database.database().reference().child("posts").child(user.uid)
                   ref.observeSingleEvent(of: .value, with: { (snapshot) in
                       
                       guard let dictionaries = snapshot.value as? [String: Any] else { return }
