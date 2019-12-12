@@ -44,7 +44,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             guard let user = self.user else { return }
             
             let post = Post(user: user, dictionary: dictionary)
-            self.posts.append(post)
+            
+            self.posts.insert(post, at: 0)
+//            self.posts.append(post)
             
             self.collectionView.reloadData()
             
@@ -127,7 +129,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             guard let dictionary = snapshot.value as? [String : Any] else { return }
             
-            self.user = User(dictionary: dictionary)
+            self.user = User(uid: uid, dictionary: dictionary)
             self.navigationItem.title = self.user?.username
             
             self.collectionView?.reloadData()
@@ -138,14 +140,4 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
     }
     
-}
-
-struct User {
-    let username: String
-    let profileImageUrl: String
-    
-    init(dictionary: [String: Any]) {
-        self.username = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-    }
 }
