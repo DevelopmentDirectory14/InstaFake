@@ -10,8 +10,17 @@ import UIKit
 import Firebase
 
 extension Database {
-    static func fetchUserWithUID(uid: String) {
-        print("Fetching user with UID:", uid)
+    static func fetchUserWithUID(uid: String, completion: @escaping (User) -> ()) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userDictionary = snapshot.value as? [String: Any] else { return }
+            let user = User(uid: uid, dictionary: userDictionary)
+            completion(user)
+             
+        }) { (err) in
+            print("Failed to fetch user for posts:", err)
+        }
     }
 }
 
@@ -35,19 +44,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     fileprivate func fetchPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Database.fetchUserWithUID(uid: uid)
-        
-//        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//            
-//            guard let userDictionary = snapshot.value as? [String: Any] else { return }
-//            
-//            let user = User(uid: uid, dictionary: userDictionary)
-//            
-//            self.fetchPostsWithUser(user: user)
-//             
-//        }) { (err) in
-//            print("Failed to fetch user for posts:", err)
-//        }
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.fetchPostsWithUser(user: user)
+        }
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
