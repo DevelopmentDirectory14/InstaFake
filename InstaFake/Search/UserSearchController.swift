@@ -9,15 +9,27 @@
 import UIKit
 import Firebase
 
-class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
-    let searchBar: UISearchBar = {
+    lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Enter username"
         sb.barTintColor = .gray
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+        sb.delegate = self
+        
         return sb
     }()
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredUsers = self.users.filter { (user) -> Bool in
+            return user.username.contains(searchText)
+        }
+        
+        self.collectionView?.reloadData()
+        
+    }
     
     let cellId = "cellId"
     
@@ -37,6 +49,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         fetchUsers()
     }
+    
+    var filteredUsers = [User]()
     
     var users = [User]()
     
@@ -62,13 +76,13 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        return filteredUsers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserSearchCell
 
-        cell.user = users[indexPath.item]
+        cell.user = filteredUsers[indexPath.item]
         
         return cell
     }
