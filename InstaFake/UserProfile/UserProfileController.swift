@@ -18,8 +18,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         collectionView?.backgroundColor = .white
         
-        navigationItem.title = Auth.auth().currentUser?.uid
-        
         fetchUser()
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")

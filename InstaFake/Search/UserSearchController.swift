@@ -52,6 +52,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.register(UserSearchCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.alwaysBounceVertical = true
+        collectionView?.keyboardDismissMode = .onDrag
         
         fetchUsers()
     }
@@ -64,6 +65,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         searchBar.isHidden = true
+        searchBar.resignFirstResponder()
         
         let user = filteredUsers[indexPath.item]
         print(user.username)
