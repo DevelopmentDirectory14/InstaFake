@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -33,6 +34,22 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.register(UserSearchCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.alwaysBounceVertical = true
+        
+        fetchUsers()
+    }
+    
+    fileprivate func fetchUsers() {
+        print("Fetching users..")
+        
+        let ref = Database.database().reference().child("users")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value)
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+        }) { (err) in
+            print("Failed to fetch users for search:", err)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
