@@ -71,6 +71,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         print(user.username)
         
         let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        userProfileController.userId = user.uid
         navigationController?.pushViewController(userProfileController, animated: true)
     }
     
