@@ -68,6 +68,12 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
             dictionaries.forEach { (key, value) in
+                
+                if key == Auth.auth().currentUser?.uid {
+                    print("Found myself, omit from list")
+                    return
+                }
+                
                 guard let userDictionary = value as? [String: Any] else { return }
                 
                 let user = User(uid: key, dictionary:  userDictionary)
