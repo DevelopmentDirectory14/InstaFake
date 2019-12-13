@@ -56,8 +56,12 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchUsers()
     }
     
-    var filteredUsers = [User]()
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let user = filteredUsers[indexPath.item]
+        print(user.username)
+    }
     
+    var filteredUsers = [User]()
     var users = [User]()
     
     fileprivate func fetchUsers() {
