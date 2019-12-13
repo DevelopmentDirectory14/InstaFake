@@ -23,9 +23,15 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredUsers = self.users.filter { (user) -> Bool in
-            return user.username.contains(searchText)
+        if searchText.isEmpty {
+            filteredUsers = users
+        } else {
+            filteredUsers = self.users.filter { (user) -> Bool in
+                return user.username.contains(searchText)
+            }
         }
+        
+        
         
         self.collectionView?.reloadData()
         
@@ -67,7 +73,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 let user = User(uid: key, dictionary:  userDictionary)
                 self.users.append(user)
             }
-            
+            self.filteredUsers = self.users
             self.collectionView?.reloadData()
             
         }) { (err) in
