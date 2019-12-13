@@ -56,9 +56,20 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.isHidden = false
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        searchBar.isHidden = true
+        
         let user = filteredUsers[indexPath.item]
         print(user.username)
+        
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(userProfileController, animated: true)
     }
     
     var filteredUsers = [User]()
