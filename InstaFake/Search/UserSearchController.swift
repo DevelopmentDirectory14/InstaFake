@@ -27,7 +27,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             filteredUsers = users
         } else {
             filteredUsers = self.users.filter { (user) -> Bool in
-                return user.username.contains(searchText)
+                return user.username.lowercased().contains(searchText.lowercased())
             }
         }
         
@@ -73,6 +73,13 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 let user = User(uid: key, dictionary:  userDictionary)
                 self.users.append(user)
             }
+            
+            self.users.sort { (u1, u2) -> Bool in
+                
+                return u1.username.compare(u2.username) == .orderedAscending
+                
+            }
+            
             self.filteredUsers = self.users
             self.collectionView?.reloadData()
             
