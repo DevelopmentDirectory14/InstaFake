@@ -19,16 +19,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+        
         setupNavigationItems()
         
         fetchPosts()
-        
-//        Database.fetchUserWithUID(uid: "s9A1v2yjI2WNNKXleq9Ujc01doj2") { (user) in
-//            self.fetchPostsWithUser(user: user)
-//        }
-
         fetchFollowingUserIds()
         
+    }
+    
+    @objc func handleRefresh() {
+        print("Handling refresh...")
+        fetchPosts()
+        fetchFollowingUserIds()
     }
     
     fileprivate func fetchFollowingUserIds() {
@@ -62,6 +67,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let ref = Database.database().reference().child("posts").child(user.uid)
                   ref.observeSingleEvent(of: .value, with: { (snapshot) in
                       
+                      self.collectionView?.refreshControl?.endRefreshing()
+                    
                       guard let dictionaries = snapshot.value as? [String: Any] else { return }
                       
                       dictionaries.forEach { (key, value) in
