@@ -11,6 +11,17 @@ import AVFoundation
 
 class CameraController: UIViewController {
     
+    let dismissButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "right_arrow_shadow")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     let capturePhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "capture_photo")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -26,10 +37,17 @@ class CameraController: UIViewController {
         super.viewDidLoad()
         
         setupCaptureSession()
+        setupHUD()
         
+    }
+    
+    fileprivate func setupHUD() {
         view.addSubview(capturePhotoButton)
         capturePhotoButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 80, height: 80)
         capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        view.addSubview(dismissButton)
+        dismissButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 50, height: 50)
     }
     
     fileprivate func setupCaptureSession() {
@@ -53,10 +71,18 @@ class CameraController: UIViewController {
         }
         
         //3. setup output preview
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) 
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         previewLayer.frame = view.frame
         view.layer.addSublayer(previewLayer)
+        
         captureSession.startRunning()
+        
+    
+        
+        
+        
     }
     
 }
