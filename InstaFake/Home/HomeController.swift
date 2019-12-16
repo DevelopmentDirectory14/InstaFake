@@ -102,8 +102,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                   }
     }
     
-    fileprivate func setupNavigationItems() {
+    func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo2"))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera3")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+    }
+    
+    @objc func handleCamera() {
+        print("Showing Camera")
+        
+        let cameraController = CameraController()
+        present(cameraController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

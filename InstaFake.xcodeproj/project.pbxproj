@@ -10,6 +10,7 @@
 		0A1FB23C2385AB91006D67EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */; };
 		0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB23D2385AD2D006D67EF /* UserProfileController.swift */; };
 		0A1FB2412385C4FF006D67EF /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FB2402385C4FF006D67EF /* UserProfileHeader.swift */; };
+		0A6367F023A80F1F00CAB357 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367EF23A80F1F00CAB357 /* CameraController.swift */; };
 		0A64E6C023A2C0060063F770 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64E6BF23A2C0060063F770 /* User.swift */; };
 		0A64E6C223A2F9C40063F770 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64E6C123A2F9C40063F770 /* FirebaseUtils.swift */; };
 		0A64E6C523A2FB140063F770 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64E6C423A2FB140063F770 /* UserSearchController.swift */; };
@@ -39,6 +40,7 @@
 		0A1FB23B2385AB91006D67EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0A1FB23D2385AD2D006D67EF /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		0A1FB2402385C4FF006D67EF /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		0A6367EF23A80F1F00CAB357 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		0A64E6BF23A2C0060063F770 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0A64E6C123A2F9C40063F770 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		0A64E6C423A2FB140063F770 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
+		0A6367EE23A80EFE00CAB357 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0A6367EF23A80F1F00CAB357 /* CameraController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		0A64E6C323A2FAF70063F770 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		0A6871C3237F0A2D006DC63E /* InstaFake */ = {
 			isa = PBXGroup;
 			children = (
+				0A6367EE23A80EFE00CAB357 /* Camera */,
 				0A64E6C323A2FAF70063F770 /* Search */,
 				0A6B4D9C23A18ABF00A42312 /* Home */,
 				0A6B4D9523A14EFC00A42312 /* Models */,
@@ -326,6 +337,7 @@
 				0A6871C5237F0A2D006DC63E /* AppDelegate.swift in Sources */,
 				0A6AD763238C5C760088C74E /* PhotoSelectorController.swift in Sources */,
 				0A64E6C223A2F9C40063F770 /* FirebaseUtils.swift in Sources */,
+				0A6367F023A80F1F00CAB357 /* CameraController.swift in Sources */,
 				0A6B4D9B23A16C2800A42312 /* CustomImageView.swift in Sources */,
 				0A1FB23E2385AD2D006D67EF /* UserProfileController.swift in Sources */,
 				0A6B4D9723A14F1D00A42312 /* Posts.swift in Sources */,
