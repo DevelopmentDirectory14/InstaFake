@@ -31,8 +31,16 @@ class CameraController: UIViewController {
         }
         
         //2. setup outputs
+        let output = AVCapturePhotoOutput()
+        if captureSession.canAddOutput(output) {
+            captureSession.addOutput(output)
+        }
         
         //3. setup output preview
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) 
+        previewLayer.frame = view.frame
+        view.layer.addSublayer(previewLayer)
+        captureSession.startRunning()
     }
     
 }
