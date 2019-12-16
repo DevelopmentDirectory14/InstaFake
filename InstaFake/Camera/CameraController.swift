@@ -10,10 +10,26 @@ import UIKit
 import AVFoundation
 
 class CameraController: UIViewController {
+    
+    let capturePhotoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "capture_photo")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleCapturePhoto), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleCapturePhoto() {
+        print("Capturing photo...")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCaptureSession()
+        
+        view.addSubview(capturePhotoButton)
+        capturePhotoButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 80, height: 80)
+        capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     fileprivate func setupCaptureSession() {
