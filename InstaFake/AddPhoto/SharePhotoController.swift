@@ -86,7 +86,6 @@ class SharePhotoController: UIViewController {
                 guard let imageURL = downloadURL?.absoluteString else { return }
                 
                 print("Successfully uploaded shared image:", imageURL)
-                
                 self.saveToDatabaseWithImageUrl(imageURL: imageURL)
                 
             }
@@ -95,6 +94,8 @@ class SharePhotoController: UIViewController {
         
         
     }
+    
+    static let updateFeedNotificatioName = NSNotification.Name(rawValue: "UpdateFeed")
     
     fileprivate func saveToDatabaseWithImageUrl(imageURL: String) {
         guard let postImage = selectedImage else { return }
@@ -117,6 +118,10 @@ class SharePhotoController: UIViewController {
             
             print("Successfully saved post to DB")
             self.dismiss(animated: true, completion: nil)
+            
+            
+            
+            NotificationCenter.default.post(name: SharePhotoController.updateFeedNotificatioName, object: nil)
         }
         
     }
