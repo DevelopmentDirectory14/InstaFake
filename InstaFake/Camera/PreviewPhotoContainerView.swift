@@ -22,6 +22,17 @@ class PreviewPhotoContainerView: UIView {
         return button
     }()
     
+    let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "save_shadow")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleSave() {
+        print("Handling save....")
+    }
+    
     @objc func handleCancel() {
         self.removeFromSuperview()
     }
@@ -35,6 +46,9 @@ class PreviewPhotoContainerView: UIView {
         
         addSubview(cancelButton)
         cancelButton.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        
+        addSubview(saveButton)
+        saveButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 24, paddingBottom: 24, paddingRight: 0, width: 50, height: 50)
     }
     
     required init?(coder: NSCoder) {
