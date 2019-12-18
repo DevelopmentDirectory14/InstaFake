@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomePostCellDelegate {
-    func didTapComment()
+    func didTapComment(post: Post)
 }
 
 class HomePostCell: UICollectionViewCell {
@@ -95,7 +95,8 @@ class HomePostCell: UICollectionViewCell {
     
     @objc func handleComment() {
         print("Trying to show comments...")
-        delegate?.didTapComment()
+        guard let post = self.post else { return }
+        delegate?.didTapComment(post: post)
     }
     
     let sendMessageButton: UIButton = {

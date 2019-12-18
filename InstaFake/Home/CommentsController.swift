@@ -13,5 +13,7 @@ class CommentsController: UICollectionViewController {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = .red
+        
+        tabBarController?.tabBar.isHidden = true 
     }
 }
