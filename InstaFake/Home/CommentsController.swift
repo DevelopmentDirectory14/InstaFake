@@ -25,4 +25,23 @@ class CommentsController: UICollectionViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    override var inputAccessoryView: UIView? {
+        get {
+            let containerView = UIView()
+            containerView.backgroundColor = .white
+            containerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+            
+            let textField = UITextField()
+            textField.placeholder = "Enter Comment"
+            containerView.addSubview(textField)
+            textField.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+            
+            return containerView
+        }
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
 }
