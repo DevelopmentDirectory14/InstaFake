@@ -14,6 +14,12 @@ class CommentsController: UICollectionViewController {
         
         collectionView?.backgroundColor = .red
         
-        tabBarController?.tabBar.isHidden = true 
+        tabBarController?.tabBar.isHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
 }
