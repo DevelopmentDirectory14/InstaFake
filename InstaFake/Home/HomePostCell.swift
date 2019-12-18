@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment()
+}
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate: HomePostCellDelegate?
     
     var post: Post? {
         didSet {
@@ -89,6 +95,7 @@ class HomePostCell: UICollectionViewCell {
     
     @objc func handleComment() {
         print("Trying to show comments...")
+        delegate?.didTapComment()
     }
     
     let sendMessageButton: UIButton = {
