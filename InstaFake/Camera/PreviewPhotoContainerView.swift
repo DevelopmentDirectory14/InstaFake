@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class PreviewPhotoContainerView: UIView {
     
@@ -31,6 +32,56 @@ class PreviewPhotoContainerView: UIView {
     
     @objc func handleSave() {
         print("Handling save....")
+        
+        guard let previewImage = previewImageView.image else { return }
+        
+        let library = PHPhotoLibrary.shared()
+        library.performChanges({
+            
+            PHAssetChangeRequest.creationRequestForAsset(from: previewImage)
+            
+        }) { (success, err) in
+            if let err = err {
+                print("Failed to save image to photo library:", err)
+                return
+            }
+            
+            print("Successfuly saved image to photo library")
+            
+            DispatchQueue.main.async {
+                let savedLabel = UILabel()
+                savedLabel.text = "Saved Successfully in Photo Library"
+                savedLabel.font = UIFont.boldSystemFont(ofSize: 18)
+                savedLabel.textColor = .white
+                savedLabel.numberOfLines = 0
+                savedLabel.backgroundColor = UIColor(white: 0, alpha: 0.3)
+                savedLabel.textAlignment = .center
+                savedLabel.frame = CGRect(x: 0, y: 0, width: 250, height: 80)
+                savedLabel.center = self.center
+                
+                self.addSubview(savedLabel)
+                
+                savedLabel.layer.transform = CATransform3DMakeScale(0, 0, 0)
+                
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    
+                    savedLabel.layer.transform = CATransform3DMakeScale(1, 1, 1)
+                    
+                }) { (completed) in
+                    //completed
+                    
+                    UIView.animate(withDuration: 0.5, delay: 0.75, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                        
+                        savedLabel.layer.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
+                        savedLabel.alpha = 0
+                        
+                    }) { (_) in
+                        savedLabel.removeFromSuperview()
+                    }
+                    
+                }
+            }
+        }
     }
     
     @objc func handleCancel() {
