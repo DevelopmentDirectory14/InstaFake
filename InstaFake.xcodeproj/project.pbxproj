@@ -34,6 +34,7 @@
 		0A6E8C4A2387361500F5D39A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E8C492387361500F5D39A /* LoginController.swift */; };
 		0A74FCB023A9744E00001067 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74FCAF23A9744E00001067 /* PreviewPhotoContainerView.swift */; };
 		0A74FCB223A98D1900001067 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74FCB123A98D1900001067 /* CustomAnimationPresentor.swift */; };
+		0A76BF9923B15FDC007CBA78 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76BF9823B15FDC007CBA78 /* CustomAnimationDismisser.swift */; };
 		0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */; };
 		0AF1B345238F136D00AEF2DF /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */; };
 		704FA9ACC934C2CBACF1155C /* Pods_InstaFake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC671B279DE8BC8069559B37 /* Pods_InstaFake.framework */; };
@@ -69,6 +70,7 @@
 		0A6E8C492387361500F5D39A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0A74FCAF23A9744E00001067 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
 		0A74FCB123A98D1900001067 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		0A76BF9823B15FDC007CBA78 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		146531540772C7FDBD45436A /* Pods-InstaFake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.debug.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				0A6367EF23A80F1F00CAB357 /* CameraController.swift */,
 				0A74FCAF23A9744E00001067 /* PreviewPhotoContainerView.swift */,
 				0A74FCB123A98D1900001067 /* CustomAnimationPresentor.swift */,
+				0A76BF9823B15FDC007CBA78 /* CustomAnimationDismisser.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				0A6871FC237F5C7D006DC63E /* Extensions.swift in Sources */,
 				0A6A5B4C23A3EC3600431C46 /* UserSearchCell.swift in Sources */,
 				0A6BE2DE23AAD2B30079100B /* CommentsController.swift in Sources */,
+				0A76BF9923B15FDC007CBA78 /* CustomAnimationDismisser.swift in Sources */,
 				0A74FCB223A98D1900001067 /* CustomAnimationPresentor.swift in Sources */,
 				0A6AD765238C85E00088C74E /* PhotoSelectorCell.swift in Sources */,
 			);
