@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsController: UICollectionViewController {
     override func viewDidLoad() {
@@ -54,6 +55,17 @@ class CommentsController: UICollectionViewController {
     
     @objc func handleSubmit() {
         print("Insert comment:", commentTextField.text ?? "")
+        
+        let postId = "temporaryPostId"
+        let values = ["text": commentTextField.text ?? ""]
+        
+        Database.database().reference().child("comments").child(postId).updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Failed to insert comment into db:", err)
+            }
+            
+            print("Successfully inserted comment into db.")
+        }
     }
     
     override var inputAccessoryView: UIView? {
