@@ -32,6 +32,8 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
         fetchComments()
     }
     
+    var comments = [Comment]()
+    
     fileprivate func fetchComments() {
         guard let postId = self.post?.id else { return }
         let ref = Database.database().reference().child("comments").child(postId)
@@ -40,7 +42,9 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
             let comment = Comment(dictionary: dictionary)
-            print(comment.text, comment.uid)
+//            print(comment.text, comment.uid)
+            self.comments.append(comment)
+            self.collectionView.reloadData()
             
         }) { (err) in
             print("Failed to observe comments:", err)
@@ -48,7 +52,7 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return comments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -57,6 +61,8 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CommentCell
+        
+        cell.comment = self.comments[indexPath.item]
         
         return cell
     }
