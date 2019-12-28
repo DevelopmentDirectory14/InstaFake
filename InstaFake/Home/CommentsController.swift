@@ -13,12 +13,25 @@ class CommentsController: UICollectionViewController {
     
     var post: Post?
     
+    let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Comments"
         
         collectionView?.backgroundColor = .red
+        collectionView?.register(CommentCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CommentCell
+        
+        return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
