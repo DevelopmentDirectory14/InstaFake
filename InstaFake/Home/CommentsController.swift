@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CommentsController: UICollectionViewController {
+class CommentsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var post: Post?
     
@@ -21,11 +21,38 @@ class CommentsController: UICollectionViewController {
         navigationItem.title = "Comments"
         
         collectionView?.backgroundColor = .red
+        /* This code prevented scrolling altogether and did not change look.
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
+        */
+        /* This code broke homecontroller and made it blank
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
+        */
         collectionView?.register(CommentCell.self, forCellWithReuseIdentifier: cellId)
+        
+        fetchComments()
+    }
+    
+    fileprivate func fetchComments() {
+        guard let postId = self.post?.id else { return }
+        let ref = Database.database().reference().child("comments").child(postId)
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let comment = Comment(dictionary: dictionary)
+            print(comment.text, comment.uid)
+            
+        }) { (err) in
+            print("Failed to observe comments:", err)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
