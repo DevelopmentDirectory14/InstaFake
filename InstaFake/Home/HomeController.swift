@@ -84,14 +84,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                       
                       dictionaries.forEach { (key, value) in
                           
-                          guard let dictionary = value as? [String: Any] else { return }
+                        guard let dictionary = value as? [String: Any] else { return }
                           
-                          let post = Post(user: user, dictionary: dictionary)
-                         
-                          self.posts.append(post)
+                        var post = Post(user: user, dictionary: dictionary)
+                        post.id = key
+                            
+                        self.posts.append(post)
                       }
                     
-                    self.posts.sort { (p1, p2) -> Bool in
+                     self.posts.sort { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     }
                     
@@ -143,6 +144,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print("Message coming from HomeController")
         print(post.caption)
         let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        commentsController.post = post
         navigationController?.pushViewController(commentsController, animated: true)
     }
 }
