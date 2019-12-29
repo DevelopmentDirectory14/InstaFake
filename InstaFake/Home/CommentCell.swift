@@ -18,18 +18,18 @@ class CommentCell: UICollectionViewCell {
             
             attributedText.append(NSAttributedString(string: " " + comment.text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
             
-            textLabel.attributedText = attributedText
+            textView.attributedText = attributedText
             
             profileImageView.loadImage(urlString: comment.user.profileImageUrl)
         }
     }
     
-    let textLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
+    let textView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 14)
+//        label.numberOfLines = 0
 //        label.backgroundColor = .lightGray
-        return label
+        return textView
     }()
     
     let profileImageView: CustomImageView = {
@@ -49,8 +49,8 @@ class CommentCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 40 / 2
         
         
-        addSubview(textLabel)
-        textLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 4, paddingRight: 4, width: 0, height: 0)
+        addSubview(textView)
+        textView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 4, paddingRight: 4, width: 0, height: 0)
     }
     
     required init?(coder: NSCoder) {
