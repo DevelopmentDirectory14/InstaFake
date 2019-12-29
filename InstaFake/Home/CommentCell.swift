@@ -16,7 +16,12 @@ class CommentCell: UICollectionViewCell {
             
             guard let profileImageUrl = comment.user?.profileImageUrl else { return }
             
-            textLabel.text = comment.text
+            guard let username = comment.user?.username else { return }
+            
+            let attributedText = NSMutableAttributedString(string: username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+            
+//            textLabel.text = comment.text
+            textLabel.attributedText = attributedText
             
             comment.user?.profileImageUrl
             
