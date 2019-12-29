@@ -88,16 +88,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                           
                         var post = Post(user: user, dictionary: dictionary)
                         post.id = key
+                        
+                        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+                        Database.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                            print(snapshot)
                             
-                        self.posts.append(post)
-                      }
-                    
-                     self.posts.sort { (p1, p2) -> Bool in
-                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-                    }
-                    
-                      self.collectionView?.reloadData()
-                      
+                            if let value = snapshot.value as? Int, value == 1 {
+                                post.hasLiked = true
+                            } else {
+                                post.hasLiked = false
+                            }
+                            
+                            self.posts.append(post)
+                            self.posts.sort { (p1, p2) -> Bool in
+                                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+                            }
+                            self.collectionView?.reloadData()
+                            
+                        }) { (err) in
+                            print("Failed to fetch like info for post:", err)
+                        }
+                      } 
                   }) { (err) in
                       print("Failed to fetch posts:", err)
                   }
