@@ -14,19 +14,13 @@ class CommentCell: UICollectionViewCell {
         didSet {
             guard let comment = comment else { return }
             
-            guard let profileImageUrl = comment.user?.profileImageUrl else { return }
-            
-            guard let username = comment.user?.username else { return }
-            
-            let attributedText = NSMutableAttributedString(string: username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+            let attributedText = NSMutableAttributedString(string: comment.user.username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
             
             attributedText.append(NSAttributedString(string: " " + comment.text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
             
             textLabel.attributedText = attributedText
             
-            comment.user?.profileImageUrl
-            
-            profileImageView.loadImage(urlString: profileImageUrl)
+            profileImageView.loadImage(urlString: comment.user.profileImageUrl)
         }
     }
     
