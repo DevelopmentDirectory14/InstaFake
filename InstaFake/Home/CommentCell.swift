@@ -29,6 +29,7 @@ class CommentCell: UICollectionViewCell {
         textView.font = UIFont.systemFont(ofSize: 14)
 //        label.numberOfLines = 0
 //        label.backgroundColor = .lightGray
+        textView.isScrollEnabled = false
         return textView
     }()
     
