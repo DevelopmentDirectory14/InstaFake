@@ -20,7 +20,7 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
         
         navigationItem.title = "Comments"
         
-        collectionView?.backgroundColor = .red
+        collectionView?.backgroundColor = .white
         /* This code prevented scrolling altogether and did not change look.
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
         */
