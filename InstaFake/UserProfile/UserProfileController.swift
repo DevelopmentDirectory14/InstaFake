@@ -44,6 +44,25 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     var posts = [Post]()
     
+    fileprivate func paginatePosts() {
+        print("Start paging for more posts")
+        
+        guard let uid = self.user?.uid else { return }
+        let ref = Database.database().reference().child("posts").child(uid)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let allObjects = snapshot.children.allObjects as? [DataSnapshot]
+            
+            allObjects?.forEach({ (snapshot) in
+                print(snapshot.key)
+            })
+            
+        }) { (err) in
+            print("Failed to paginate for posts:", err)
+        }
+    }
+    
     fileprivate func fetchOrderedPosts() {
         guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
@@ -158,7 +177,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.collectionView?.reloadData()
             
-            self.fetchOrderedPosts()
+            self.paginatePosts()
         }
     }
     
