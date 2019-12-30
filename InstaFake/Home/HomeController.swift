@@ -109,7 +109,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                         }) { (err) in
                             print("Failed to fetch like info for post:", err)
                         }
-                      } 
+                      }
                   }) { (err) in
                       print("Failed to fetch posts:", err)
                   }
@@ -165,14 +165,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         guard let indexPath = collectionView?.indexPath(for: cell) else { return }
         
-        let post = self.posts[indexPath.item]
+        var post = self.posts[indexPath.item]
         print(post.caption)
         
         guard let postId = post.id else { return }
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let values = [uid: 1]
+        let values = [uid: post.hasLiked == true ? 0 : 1]
         
         Database.database().reference().child("likes").child(postId).updateChildValues(values) { (err, _) in
             
@@ -182,6 +182,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }
             
             print("Successfully liked post.")
+            
+            post.hasLiked = !post.hasLiked
+            
+            self.posts[indexPath.item] = post
+            
+            self.collectionView.reloadItems(at: [indexPath])
         }
     }
 }
