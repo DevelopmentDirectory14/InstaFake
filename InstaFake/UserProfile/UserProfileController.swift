@@ -50,22 +50,38 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
-        let value = "-LxMZmsluPTdlcumgGzo"
-        let query = ref.queryOrderedByKey().queryStarting(atValue: value).queryLimited(toFirst: 6)
+//        let value = "-LxMZmsluPTdlcumgGzo"
+//        let query = ref.queryOrderedByKey().queryStarting(atValue: value).queryLimited(toFirst: 6)
         
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
+        var query = ref.queryOrderedByKey()
+        
+        if posts.count > 0 {
+            let value = posts.last?.id
+            query = query.queryStarting(atValue: value)
+        }
+        
+        query.queryLimited(toFirst: 3).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            let allObjects = snapshot.children.allObjects as? [DataSnapshot]
+            var allObjects = snapshot.children.allObjects as? [DataSnapshot]
+            
+            if self.posts.count > 0 {
+                allObjects?.removeFirst()
+            }
             
             guard let user = self.user else { return }
             
             allObjects?.forEach({ (snapshot) in
                 
                 guard let dictionary = snapshot.value as? [String: Any] else { return }
-                let post = Post(user: user, dictionary: dictionary)
+                var post = Post(user: user, dictionary: dictionary)
+                
+                post.id = snapshot.key
                 
                 self.posts.append(post)
             })
+            self.posts.forEach { (post) in
+                print(post.id ?? "")
+            }
             
             self.collectionView?.reloadData()
             
@@ -126,6 +142,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item == self.posts.count - 1 {
+            print("Paginating for posts")
+            paginatePosts()
+        }
         
         if isGridView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
