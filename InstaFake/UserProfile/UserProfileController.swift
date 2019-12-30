@@ -50,15 +50,24 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
-        let query = ref.queryOrderedByKey().queryLimited(toFirst: 6)
+        let value = "-LxMZmsluPTdlcumgGzo"
+        let query = ref.queryOrderedByKey().queryStarting(atValue: value).queryLimited(toFirst: 6)
         
         query.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let allObjects = snapshot.children.allObjects as? [DataSnapshot]
             
+            guard let user = self.user else { return }
+            
             allObjects?.forEach({ (snapshot) in
-                print(snapshot.key)
+                
+                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                let post = Post(user: user, dictionary: dictionary)
+                
+                self.posts.append(post)
             })
+            
+            self.collectionView?.reloadData()
             
         }) { (err) in
             print("Failed to paginate for posts:", err)
