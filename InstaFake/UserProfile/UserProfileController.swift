@@ -9,11 +9,19 @@
 import UIKit
 import Firebase
 
-class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UserProfileHeaderDelegate {
     
     let cellId = "cellId"
     
     var userId: String?
+    
+    func didChangeToGridView() {
+        <#code#>
+    }
+    
+    func didChangeToListView() {
+        <#code#>
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

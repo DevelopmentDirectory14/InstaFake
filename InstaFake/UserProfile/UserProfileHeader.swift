@@ -9,7 +9,15 @@
 import UIKit
 import Firebase
 
+protocol UserProfileHeaderDelegate {
+    func didChangeToListView()
+    func didChangeToGridView()
+}
+
 class UserProfileHeader: UICollectionViewCell {
+    
+    var delegate: UserProfileHeaderDelegate?
+    
     var user: User? {
         didSet {
             
@@ -117,6 +125,7 @@ class UserProfileHeader: UICollectionViewCell {
         print("Changing to grid view")
         gridButton.tintColor = .mainBlue()
         listButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.didChangeToGridView()
     }
     
     lazy var listButton: UIButton = {
@@ -131,6 +140,7 @@ class UserProfileHeader: UICollectionViewCell {
         print("Changing to list view")
         listButton.tintColor = .mainBlue()
         gridButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.didChangeToListView()
     }
     
     let bookmarButton: UIButton = {
