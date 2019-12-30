@@ -50,7 +50,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        let query = ref.queryOrderedByKey().queryLimited(toFirst: 6)
+        
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
             
             let allObjects = snapshot.children.allObjects as? [DataSnapshot]
             
