@@ -96,11 +96,16 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
         
-        cell.post = posts[indexPath.item]
-        
-        return cell
+        if isGridView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
+            cell.post = posts[indexPath.item]
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homePostCellId, for: indexPath) as! HomePostCell
+            cell.post = posts[indexPath.item]
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -117,7 +122,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             let width = (view.frame.width - 2) / 3
             return CGSize(width: width, height: width)
         } else {
-            return CGSize(width: view.frame.width, height: 200)
+            var height: CGFloat = 40 + 8 + 8
+            height += view.frame.width
+            height += 50
+            height += 60
+            
+            return CGSize(width: view.frame.width, height: height)
         }
     }
     
