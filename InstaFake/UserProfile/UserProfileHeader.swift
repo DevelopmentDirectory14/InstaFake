@@ -112,12 +112,19 @@ class UserProfileHeader: UICollectionViewCell {
         return button
     }()
     
-    let listButton: UIButton = {
+    lazy var listButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
+        button.addTarget(self, action: #selector(handleChangeToListView), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handleChangeToListView() {
+        print("Changing to list view")
+        listButton.tintColor = .mainBlue()
+        gridButton.tintColor = UIColor(white: 0, alpha: 0.2)
+    }
     
     let bookmarButton: UIButton = {
         let button = UIButton(type: .system)
