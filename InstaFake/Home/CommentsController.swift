@@ -9,8 +9,8 @@
 import UIKit
 import Firebase
 
-class CommentsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
+class CommentsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CommentInputAccessoryViewDelegate {
+
     var post: Post?
     
     let cellId = "cellId"
@@ -101,40 +101,37 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
         tabBarController?.tabBar.isHidden = false
     }
     
-    lazy var containerView: UIView = {
+    lazy var containerView: CommentInputAccessoryView = {
         
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let commentInputAccessoryView = CommentInputAccessoryView(frame: frame)
+        commentInputAccessoryView.delegate = self
         return commentInputAccessoryView
-        
-//        let containerView = UIView()
-//        containerView.backgroundColor = .white
-//        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        
-//        containerView.addSubview(self.commentTextField)
-//        self.commentTextField.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
-        
-//        return containerView
     }()
     
-//    @objc func handleSubmit() {
-//        
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        
-//        print("post id:", self.post?.id ?? "")
-//        print("Insert comment:", commentTextField.text ?? "")
-//        
-//        let postId = self.post?.id ?? ""
-//        let values = ["text": commentTextField.text ?? "", "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
-//        
-//        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
-//            if let err = err {
-//                print("Failed to insert comment into db:", err)
-//            }
-//            
-//            print("Successfully inserted comment into db.")
-//        }
-//    }
+    func didSubmit(for comment: String) {
+        print("Trying to insert comment in fb db")
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        print("post id:", self.post?.id ?? "")
+        
+        print("Inserting comment:", comment)
+        
+        let postId = self.post?.id ?? ""
+        let values = ["text": comment, "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String : Any]
+        
+        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
+            
+            if let err = err {
+                print("Failed to insert comment:", err)
+                return
+            }
+            
+            print("Successfully inserted comment.")
+            self.containerView.clearCommentTextField()
+        }
+    }
     
     override var inputAccessoryView: UIView? {
         get {

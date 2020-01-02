@@ -8,15 +8,26 @@
 
 import UIKit
 
+protocol CommentInputAccessoryViewDelegate {
+    func didSubmit(for comment: String)
+    
+}
+
 class CommentInputAccessoryView: UIView {
     
-    let commentTextField: UITextField = {
+    var delegate: CommentInputAccessoryViewDelegate?
+    
+    func clearCommentTextField() {
+        commentTextField.text = nil
+    }
+    
+    fileprivate let commentTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Comment"
         return textField
     }()
     
-    let submitButton: UIButton = {
+    fileprivate let submitButton: UIButton = {
         let sb = UIButton(type: .system)
         sb.setTitle("Submit", for: .normal)
         sb.setTitleColor(.black, for: .normal)
@@ -48,7 +59,8 @@ class CommentInputAccessoryView: UIView {
     }
     
     @objc func handleSubmit() {
-        print("123")
+        guard let commentText = commentTextField.text else { return }
+        delegate?.didSubmit(for: commentText)
     }
     
     required init?(coder: NSCoder) {
