@@ -125,6 +125,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print("Showing Camera")
         
         let cameraController = CameraController()
+        cameraController.modalPresentationStyle = .fullScreen
         present(cameraController, animated: true, completion: nil)
     }
     
