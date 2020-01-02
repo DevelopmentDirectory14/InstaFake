@@ -37,6 +37,7 @@
 		0A76BF9923B15FDC007CBA78 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76BF9823B15FDC007CBA78 /* CustomAnimationDismisser.swift */; };
 		0A7AF0BF23B7CC84007F02BF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0BE23B7CC84007F02BF /* CommentCell.swift */; };
 		0A7AF0C123B80D4D007F02BF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C023B80D4D007F02BF /* Comment.swift */; };
+		0A7AF0C323BE8575007F02BF /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C223BE8575007F02BF /* CommentInputAccessoryView.swift */; };
 		0AA7DB4B238F0466001F741A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */; };
 		0AF1B345238F136D00AEF2DF /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */; };
 		704FA9ACC934C2CBACF1155C /* Pods_InstaFake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC671B279DE8BC8069559B37 /* Pods_InstaFake.framework */; };
@@ -75,6 +76,7 @@
 		0A76BF9823B15FDC007CBA78 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		0A7AF0BE23B7CC84007F02BF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		0A7AF0C023B80D4D007F02BF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		0A7AF0C223BE8575007F02BF /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		0AA7DB4A238F0466001F741A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		0AF1B344238F136D00AEF2DF /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		146531540772C7FDBD45436A /* Pods-InstaFake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaFake.debug.xcconfig"; path = "Target Support Files/Pods-InstaFake/Pods-InstaFake.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				0A6B4D9F23A18CF100A42312 /* HomePostCell.swift */,
 				0A6BE2DD23AAD2B30079100B /* CommentsController.swift */,
 				0A7AF0BE23B7CC84007F02BF /* CommentCell.swift */,
+				0A7AF0C223BE8575007F02BF /* CommentInputAccessoryView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				0A6871C7237F0A2D006DC63E /* SceneDelegate.swift in Sources */,
 				0A6B4D9E23A18AE900A42312 /* HomeController.swift in Sources */,
 				0A64E6C023A2C0060063F770 /* User.swift in Sources */,
+				0A7AF0C323BE8575007F02BF /* CommentInputAccessoryView.swift in Sources */,
 				0A6B4D9923A154DD00A42312 /* UserProfilePhotoCell.swift in Sources */,
 				0A6871FC237F5C7D006DC63E /* Extensions.swift in Sources */,
 				0A6A5B4C23A3EC3600431C46 /* UserSearchCell.swift in Sources */,

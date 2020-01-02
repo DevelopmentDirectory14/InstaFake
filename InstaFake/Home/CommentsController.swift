@@ -102,6 +102,11 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     lazy var containerView: UIView = {
+        
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let commentInputAccessoryView = CommentInputAccessoryView(frame: frame)
+        return commentInputAccessoryView
+        
         let containerView = UIView()
         containerView.backgroundColor = .white
         containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
