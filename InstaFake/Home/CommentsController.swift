@@ -107,47 +107,34 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
         let commentInputAccessoryView = CommentInputAccessoryView(frame: frame)
         return commentInputAccessoryView
         
-        let containerView = UIView()
-        containerView.backgroundColor = .white
-        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+//        let containerView = UIView()
+//        containerView.backgroundColor = .white
+//        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
+//        containerView.addSubview(self.commentTextField)
+//        self.commentTextField.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
         
-        
-        containerView.addSubview(self.commentTextField)
-        self.commentTextField.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
-        
-        let lineSeparatorView = UIView()
-        lineSeparatorView.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-        containerView.addSubview(lineSeparatorView)
-        lineSeparatorView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        return containerView
+//        return containerView
     }()
     
-    let commentTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter Comment"
-        return textField
-    }()
-    
-    @objc func handleSubmit() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        print("post id:", self.post?.id ?? "")
-        print("Insert comment:", commentTextField.text ?? "")
-        
-        let postId = self.post?.id ?? ""
-        let values = ["text": commentTextField.text ?? "", "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
-        
-        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
-            if let err = err {
-                print("Failed to insert comment into db:", err)
-            }
-            
-            print("Successfully inserted comment into db.")
-        }
-    }
+//    @objc func handleSubmit() {
+//        
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        
+//        print("post id:", self.post?.id ?? "")
+//        print("Insert comment:", commentTextField.text ?? "")
+//        
+//        let postId = self.post?.id ?? ""
+//        let values = ["text": commentTextField.text ?? "", "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
+//        
+//        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
+//            if let err = err {
+//                print("Failed to insert comment into db:", err)
+//            }
+//            
+//            print("Successfully inserted comment into db.")
+//        }
+//    }
     
     override var inputAccessoryView: UIView? {
         get {

@@ -10,6 +10,12 @@ import UIKit
 
 class CommentInputAccessoryView: UIView {
     
+    let commentTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter Comment"
+        return textField
+    }()
+    
     let submitButton: UIButton = {
         let sb = UIButton(type: .system)
         sb.setTitle("Submit", for: .normal)
@@ -22,11 +28,23 @@ class CommentInputAccessoryView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .red
+//        backgroundColor = .red
         
         
         addSubview(submitButton)
         submitButton.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 50, height: 0)
+        
+        addSubview(commentTextField)
+        commentTextField.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: submitButton.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        setupLineSeparatorView()
+    }
+    
+    fileprivate func setupLineSeparatorView() {
+        let lineSeparatorView = UIView()
+        lineSeparatorView.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+        addSubview(lineSeparatorView)
+        lineSeparatorView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     @objc func handleSubmit() {
