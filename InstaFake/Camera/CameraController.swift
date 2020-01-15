@@ -2,8 +2,8 @@
 //  CameraController.swift
 //  InstaFake
 //  
-//  Created by Aleksey Shapoval on 12/16/19.
-//  Copyright © 2019 VoVa LLC. All rights reserved.
+//  Created by Aleksey Shapoval on 1/6/20.
+//  Copyright © 2020 VoVa LLC. All rights reserved.
 //
 
 import UIKit
